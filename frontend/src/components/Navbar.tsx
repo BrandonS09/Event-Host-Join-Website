@@ -51,6 +51,13 @@ const NavBar: React.FC = () => {
               >
                 Events
               </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/create-event"
+                className={location.pathname === "/create-event" ? "active": ""}
+              >
+                Create Event
+              </Nav.Link>
             </>
           )}
         </Nav>

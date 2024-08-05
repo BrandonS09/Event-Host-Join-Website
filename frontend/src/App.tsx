@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Events from './pages/Events';
 import './App.css';
 import ProtectedRoute from './components/ProtectedRoute';
+import CreateEvent from './pages/CreateEvent';
+
 
 const Logout = () => {
   localStorage.clear();
@@ -30,6 +32,11 @@ function App() {
             </ProtectedRoute>} />
           <Route path="/register" element={<RegisterAndLogout />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/create-event" element={
+            <ProtectedRoute>
+              <CreateEvent />
+            </ProtectedRoute>
+          } />
         </Routes>
       </main>
     </BrowserRouter>
