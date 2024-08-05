@@ -8,6 +8,7 @@ class Event(models.Model):
     description = models.TextField(null=True, blank=True)
     participants = models.ManyToManyField(User, related_name="participants", blank=True)
     created = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(null=True)
     
     class Meta:
         ordering = ['-created']

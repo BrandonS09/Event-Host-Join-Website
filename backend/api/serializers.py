@@ -12,6 +12,11 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 class EventSerializer(serializers.ModelSerializer):
+    host_username = serializers.SerializerMethodField()
+
     class Meta:
         model = Event
-        fields = '__all__'
+        fields = ['id', 'name', 'description', 'participants', 'created', 'date', 'host_username']
+
+    def get_host_username(self, obj):
+        return obj.host.username if obj.host else None
