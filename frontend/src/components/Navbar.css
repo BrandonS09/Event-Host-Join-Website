@@ -1,0 +1,18 @@
+/* NavBar.css */
+
+/* Padding for the brand */
+.navbar-brand {
+    padding-left: 1rem; /* Adjust the padding as needed */
+}
+
+/* Ensure links are aligned to the right */
+.navbar-nav {
+    margin-left: auto; /* Pushes the nav items to the right */
+    padding-right: 1rem;
+}
+
+/* Style for active links */
+.nav-link.active {
+    font-weight: bold; /* Makes the active link bold */
+    border-bottom: 2px solid #ffffff; /* Underline the active link */
+}

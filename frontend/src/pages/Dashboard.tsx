@@ -1,9 +1,9 @@
 import React from "react"
-const EventDashboard: React.FC = () => {
+const Dashboard: React.FC = () => {
     return (
         <>
         </>
     )
 }
 
-export default EventDashboard
+export default Dashboard
