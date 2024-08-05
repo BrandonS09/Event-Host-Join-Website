@@ -1,13 +1,20 @@
-// NavBar.tsx
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css"; // Ensure this path is correct
 import { useAuth } from "./AuthContext";
 
 const NavBar: React.FC = () => {
   const { isLoggedIn, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  console.log("NavBar render - isLoggedIn:", isLoggedIn);
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <Navbar bg="light" variant="light" expand="lg" sticky="top">
@@ -35,20 +42,19 @@ const NavBar: React.FC = () => {
               </Nav.Link>
             </>
           ) : (
-            <Nav.Link
-              onClick={logout}
-              className={location.pathname === "/logout" ? "active" : ""}
-            >
+            <>
+            <Nav.Link onClick={handleLogout}>
               Logout
             </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/events"
+              className={location.pathname === "/events" ? "active" : ""}
+            >
+              Events
+            </Nav.Link>
+            </>
           )}
-          <Nav.Link
-            as={Link}
-            to="/events"
-            className={location.pathname === "/events" ? "active" : ""}
-          >
-            Events
-          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
