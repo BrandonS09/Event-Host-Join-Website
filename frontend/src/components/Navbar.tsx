@@ -43,16 +43,14 @@ const NavBar: React.FC = () => {
             </>
           ) : (
             <>
-            <Nav.Link onClick={handleLogout}>
-              Logout
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="/events"
-              className={location.pathname === "/events" ? "active" : ""}
-            >
-              Events
-            </Nav.Link>
+              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/events"
+                className={location.pathname === "/events" ? "active" : ""}
+              >
+                Events
+              </Nav.Link>
             </>
           )}
         </Nav>
