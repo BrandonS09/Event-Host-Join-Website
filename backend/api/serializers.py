@@ -16,7 +16,7 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ['id', 'name', 'description', 'participants', 'created', 'date', 'host_username']
+        fields = ['id', 'name', 'description', 'participants', 'created', 'startdate', 'enddate', 'host_username']
 
     def get_host_username(self, obj):
         return obj.host.username if obj.host else None
