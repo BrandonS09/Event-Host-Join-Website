@@ -1,0 +1,80 @@
+/* Events.css */
+.events-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center items horizontally */
+    padding: 20px;
+    padding-top: 10px;
+    /* Reduce the top padding to move content up */
+}
+
+h2 {
+    margin-top: 0;
+    /* Remove top margin from the title */
+    margin-bottom: 20px;
+    /* Add space below the title */
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Center search bar horizontally */
+    margin-bottom: 20px;
+    /* Space below the search bar */
+}
+
+/* Style for the search input */
+.search-input {
+    width: 100%;
+    max-width: 1000px;
+    /* Set a maximum width for the search bar */
+    padding: 15px;
+    /* Increase padding for better usability */
+    font-size: 16px;
+    /* Adjust font size */
+    border-radius: 10px;
+    /* Rounded corners */
+    border: 1px solid #ccc;
+    /* Border color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional shadow for better appearance */
+}
+
+/* Container for event tiles */
+.event-container {
+    display: flex;
+    flex-direction: column; /* Stack tiles vertically */
+    align-items: flex-start; /* Align tiles to the left */
+    gap: 20px; /* Space between tiles */
+    width: 100%;
+    max-width: 1000px; /* Optional: Set a max-width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 10px; /* Add padding around the container */
+  }
+  
+  /* Style for event tile */
+  .event-tile {
+    width: 100%;
+    max-width: 900px; /* Set a maximum width for the tile */
+    padding: 20px; /* Add padding inside the tile */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* Background color of the tile */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin-bottom: 20px; /* Space between tiles */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the start (left) */
+    gap: 10px; /* Space between elements inside the tile */
+  }
+  
+
+
+/* Optional: Add some responsive design adjustments */
+@media (max-width: 600px) {
+    .search-input {
+        width: 100%;
+        /* Ensure the input still takes full width on smaller screens */
+    }
+}
