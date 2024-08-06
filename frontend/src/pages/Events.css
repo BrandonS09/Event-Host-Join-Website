@@ -37,7 +37,7 @@ h2 {
 /* Style for event tile */
 .event-tile {
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     /* Set a maximum width for the tile */
     padding: 20px;
     /* Add padding inside the tile */
