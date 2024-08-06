@@ -6,6 +6,7 @@ import './Events.css';
 interface EventType {
   id: number;
   name: string;
+  host_username: string;
   created: string;
 }
 
@@ -24,9 +25,13 @@ const Events: React.FC = () => {
   }, []);
 
   // Filter events based on search term
-  const filteredEvents = events.filter(event =>
-    event.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredEvents = events.filter(event => {
+    if (searchTerm.startsWith("host:")) {
+      const hostSearch = searchTerm.slice(5).toLowerCase().trim();
+      return event.host_username.toLowerCase().includes(hostSearch);
+    }
+    return event.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div className="events-page">
