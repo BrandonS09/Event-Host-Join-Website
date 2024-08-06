@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import api from '../api';
-import Event from '../components/Event';
-import './Events.css';
+import React, { useEffect, useState } from "react";
+import api from "../api";
+import Event from "../components/Event";
+import "../styles/Events.css";
 
 interface EventType {
   id: number;
@@ -12,12 +12,16 @@ interface EventType {
 
 const Events: React.FC = () => {
   const [events, setEvents] = useState<EventType[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const getEvents = () => {
-    api.get('/api/events/').then((res) => res.data).then((data) => {
-      setEvents(data);
-    }).catch((err) => alert(err));
+    api
+      .get("/api/events/")
+      .then((res) => res.data)
+      .then((data) => {
+        setEvents(data);
+      })
+      .catch((err) => alert(err));
   };
 
   useEffect(() => {
@@ -25,7 +29,7 @@ const Events: React.FC = () => {
   }, []);
 
   // Filter events based on search term
-  const filteredEvents = events.filter(event => {
+  const filteredEvents = events.filter((event) => {
     if (searchTerm.startsWith("host:")) {
       const hostSearch = searchTerm.slice(5).toLowerCase().trim();
       return event.host_username.toLowerCase().includes(hostSearch);
@@ -35,7 +39,6 @@ const Events: React.FC = () => {
 
   return (
     <div className="events-page">
-      <h2>Events</h2>
       <div className="search-container">
         <input
           type="text"
@@ -46,9 +49,9 @@ const Events: React.FC = () => {
         />
       </div>
       <div className="event-container">
-        {filteredEvents.map((e) => (
-          <Event e={e} key={e.id} />
-        ))}
+        {filteredEvents.map((e) => {
+          return <Event e={e} key={e.id} />;
+        })}
       </div>
     </div>
   );

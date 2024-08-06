@@ -3,7 +3,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { useTheme } from "./ThemeContext"; // Import useTheme
-import "./Navbar.css"; // Ensure this path is correct
+import "../styles/Navbar.css"; // Ensure this path is correct
 
 const NavBar: React.FC = () => {
   const { isLoggedIn, logout } = useAuth();
@@ -49,7 +49,13 @@ const NavBar: React.FC = () => {
             </>
           ) : (
             <>
-              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/dashboard"
+                className={location.pathname === "/dashboard" ? "active" : ""}
+              >
+                Dashboard
+              </Nav.Link>
               <Nav.Link
                 as={Link}
                 to="/events"
@@ -60,10 +66,13 @@ const NavBar: React.FC = () => {
               <Nav.Link
                 as={Link}
                 to="/create-event"
-                className={location.pathname === "/create-event" ? "active" : ""}
+                className={
+                  location.pathname === "/create-event" ? "active" : ""
+                }
               >
                 Create Event
               </Nav.Link>
+              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
             </>
           )}
         </Nav>

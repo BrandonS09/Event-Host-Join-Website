@@ -1,10 +1,10 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../api'; // Import the configured axios instance
-import { Form, Button, Container, Alert } from 'react-bootstrap';
-import { ACCESS_TOKEN } from '../constants';
-import { useTheme } from '../components/ThemeContext'; // Import useTheme
-import './CreateEvent.css'; // Import your custom CSS for additional styling
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../api"; // Import the configured axios instance
+import { Form, Button, Container, Alert } from "react-bootstrap";
+import { ACCESS_TOKEN } from "../constants";
+import { useTheme } from "../components/ThemeContext"; // Import useTheme
+import "../styles/CreateEvent.css"; // Import your custom CSS for additional styling
 
 interface EventData {
   name: string;
@@ -15,49 +15,53 @@ interface EventData {
 
 const CreateEvent: React.FC = () => {
   const [eventData, setEventData] = useState<EventData>({
-    name: '',
-    startdate: '',
-    enddate: '',
-    description: '',
+    name: "",
+    startdate: "",
+    enddate: "",
+    description: "",
   });
-  const [error, setError] = useState<string>('');
-  const [success, setSuccess] = useState<string>('');
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
   const navigate = useNavigate(); // Hook for navigation
   const { theme } = useTheme(); // Get the current theme from context
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setEventData({ ...eventData, [name]: value });
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
 
     const token = localStorage.getItem(ACCESS_TOKEN);
 
     try {
-      await api.post('api/create-event/', eventData, {
+      await api.post("api/create-event/", eventData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setSuccess('Event created successfully!');
+      setSuccess("Event created successfully!");
       setEventData({
-        name: '',
-        startdate: '',
-        enddate: '',
-        description: '',
+        name: "",
+        startdate: "",
+        enddate: "",
+        description: "",
       });
-      navigate('/events'); // Redirect to /events
+      navigate("/events"); // Redirect to /events
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError("An error occurred. Please try again.");
     }
   };
 
   return (
-    <Container className={`create-event-container ${theme}`}> {/* Apply theme class here */}
+    <Container className={`create-event-container ${theme}`}>
+      {" "}
+      {/* Apply theme class here */}
       <h1 className={`create-event-title ${theme}`}>Create Event</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}
@@ -106,7 +110,13 @@ const CreateEvent: React.FC = () => {
             className={`form-input ${theme}`} // Apply theme class here
           />
         </Form.Group>
-        <Button variant="primary" type="submit" className={`form-button ${theme}`}> {/* Apply theme class here */}
+        <Button
+          variant="primary"
+          type="submit"
+          className={`form-button ${theme}`}
+        >
+          {" "}
+          {/* Apply theme class here */}
           Create Event
         </Button>
       </Form>
