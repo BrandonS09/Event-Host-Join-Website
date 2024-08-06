@@ -1,42 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaSun, FaMoon } from 'react-icons/fa';
-import { useTheme } from './ThemeContext';
-
-const Button = styled.button<{ theme: string }>`
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background: ${({ theme }) => (theme === 'light' ? '#fff' : '#333')};
-  color: ${({ theme }) => (theme === 'light' ? '#333' : '#fff')};
-  border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  z-index: 1000; /* Ensure ThemeSwitcher is above other content */
-  
-  &:hover {
-    background: ${({ theme }) => (theme === 'light' ? '#f0f0f0' : '#555')};
-  }
-
-  svg {
-    font-size: 24px;
-  }
-`;
+import React from "react";
+import { useTheme } from "./ThemeContext";
+import { FaSun, FaMoon } from "react-icons/fa6";
+import "../styles/ThemeSwitcher.css"; // Add this for smooth transition CSS
 
 const ThemeSwitcher: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   return (
-    <Button theme={theme} onClick={toggleTheme}>
-      {theme === 'light' ? <FaMoon /> : <FaSun />}
-    </Button>
+    <button
+      className="theme-switcher"
+      onClick={toggleTheme}
+      aria-label="Toggle Theme"
+    >
+      {theme === "light" ? <FaSun /> : <FaMoon />}
+    </button>
   );
 };
 

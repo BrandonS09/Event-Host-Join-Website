@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import api from "../api";
 import Event from "../components/Event";
+import "../styles/Dashboard.css";
 
 interface EventType {
   id: number;
@@ -36,7 +37,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <Container>
+    <Container className="dashboard-tab ${theme}">
       <Tabs defaultActiveKey="joined" id="dashboard-tabs">
         <Tab eventKey="joined" title="Joined Events">
           <Row>

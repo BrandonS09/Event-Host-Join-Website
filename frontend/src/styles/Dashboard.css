@@ -1,0 +1,26 @@
+.dashboard-container {
+    padding: 20px;
+}
+
+.dashboard-container.light {
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+.dashboard-container.dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border-color: #dee2e6 #dee2e6 #f9f9f9;
+}
+
+.nav-tabs .nav-link {
+    color: inherit;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: #e9ecef #e9ecef #f9f9f9;
+}

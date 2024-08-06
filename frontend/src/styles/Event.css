@@ -19,6 +19,11 @@
     /* Align content to the start */
     gap: 10px;
     /* Space between elements inside the tile */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.event-tile:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* or another hover color */
 }
 
 .event-content {

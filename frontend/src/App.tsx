@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CreateEvent from "./pages/CreateEvent";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import Dashboard from "./pages/Dashboard";
+import EventDetail from "./pages/EventDetail";
 
 const Logout = () => {
   localStorage.clear();
@@ -26,6 +27,14 @@ function App() {
       <Navbar />
       <main style={{ marginTop: "4rem" }}>
         <Routes>
+          <Route
+            path="/events/:id"
+            element={
+              <ProtectedRoute>
+                <EventDetail />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route
             path="/events"

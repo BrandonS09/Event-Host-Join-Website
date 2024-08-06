@@ -74,13 +74,22 @@ h2 {
     border-radius: 5px;
 }
 
-
-
-
 /* Optional: Add some responsive design adjustments */
 @media (max-width: 600px) {
     .search-input {
         width: 100%;
         /* Ensure the input still takes full width on smaller screens */
     }
+}
+.event-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.event-tile {
+    transition: transform 0.2s;
+}
+
+.event-tile:hover {
+    transform: scale(1.02);
 }

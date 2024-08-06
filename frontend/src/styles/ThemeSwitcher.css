@@ -1,0 +1,19 @@
+.theme-switcher {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #f0f0f0;
+    color: var(--text-color-light);
+    cursor: pointer;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+html.dark .theme-switcher {
+    background: #555;
+    color: var(--text-color-dark);
+}

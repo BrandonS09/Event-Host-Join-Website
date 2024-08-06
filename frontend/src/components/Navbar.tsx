@@ -1,15 +1,15 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import "../styles/Navbar.css"; // Ensure this path is correct
 import { useAuth } from "./AuthContext";
 import { useTheme } from "./ThemeContext"; // Import useTheme
-import "../styles/Navbar.css"; // Ensure this path is correct
 
 const NavBar: React.FC = () => {
   const { isLoggedIn, logout } = useAuth();
+  const { theme } = useTheme(); // Get current theme
   const location = useLocation();
   const navigate = useNavigate();
-  const { theme } = useTheme(); // Get the current theme from context
 
   const handleLogout = () => {
     logout();
@@ -18,11 +18,10 @@ const NavBar: React.FC = () => {
 
   return (
     <Navbar
-      bg={theme === "light" ? "light" : "dark"} // Set bg color based on theme
-      variant={theme === "light" ? "light" : "dark"} // Set variant based on theme
+      bg={theme === "dark" ? "dark" : "light"}
+      variant={theme}
       expand="lg"
       sticky="top"
-      className={theme === "light" ? "navbar-light" : "navbar-dark"} // Apply custom class based on theme
     >
       <Navbar.Brand as={Link} to="/" className="ml-3">
         Eventify
@@ -49,13 +48,7 @@ const NavBar: React.FC = () => {
             </>
           ) : (
             <>
-              <Nav.Link
-                as={Link}
-                to="/dashboard"
-                className={location.pathname === "/dashboard" ? "active" : ""}
-              >
-                Dashboard
-              </Nav.Link>
+              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
               <Nav.Link
                 as={Link}
                 to="/events"
@@ -72,7 +65,13 @@ const NavBar: React.FC = () => {
               >
                 Create Event
               </Nav.Link>
-              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/dashboard"
+                className={location.pathname === "/dashboard" ? "active" : ""}
+              >
+                Dashboard
+              </Nav.Link>
             </>
           )}
         </Nav>

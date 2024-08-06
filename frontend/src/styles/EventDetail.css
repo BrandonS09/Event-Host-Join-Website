@@ -1,0 +1,40 @@
+.event-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-detail-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.event-detail-container p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.join-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.join-button:hover {
+    background-color: #0056b3;
+}
+
+.join-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}

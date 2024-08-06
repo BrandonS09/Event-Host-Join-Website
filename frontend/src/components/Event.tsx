@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Tile } from "carbon-components-react";
-import { useTheme } from "./ThemeContext";
-import "../styles/Event.css";
+import { ThemeContext } from "./ThemeContext"; // Adjust the path as needed
+import "../styles/Event.css"; // Import your custom CSS for additional styling
 
 interface EventProps {
   e: {
@@ -16,7 +17,8 @@ interface EventProps {
 
 const Event: React.FC<EventProps> = ({ e }) => {
   const [dateDisplay, setDateDisplay] = useState<string>("");
-  const { theme } = useTheme();
+  const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const formattedStartDate = new Date(e.startdate).toLocaleDateString(
@@ -33,13 +35,17 @@ const Event: React.FC<EventProps> = ({ e }) => {
 
   const formattedDate = new Date(e.created).toLocaleDateString("en-US");
 
+  const handleClick = () => {
+    navigate(`/events/${e.id}`);
+  };
+
   return (
-    <Tile className={`event-tile ${theme}`}>
+    <Tile className={`event-tile ${theme}`} onClick={handleClick}>
       <div className="event-content">
-        <h3 className={`event-title ${theme}`}>{e.name}</h3>
+        <h3 className="event-title">{e.name}</h3>
         <p>Hosted by {e.host_username}</p>
-        <p className={`event-date ${theme}`}>
-          Created on {formattedDate} Occurring {dateDisplay}
+        <p className="event-date">
+          Created on {formattedDate} Occuring {dateDisplay}
         </p>
       </div>
     </Tile>
