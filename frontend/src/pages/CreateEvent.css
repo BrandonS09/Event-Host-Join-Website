@@ -1,0 +1,51 @@
+.create-event-container.light {
+    background-color: #f8f9fa; /* Light theme background */
+    color: #000; /* Light theme text color */
+    border-radius: 10px; /* Rounded corners for the container */
+    padding: 20px; /* Add padding for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+  }
+  
+  .create-event-container.dark {
+    background-color: #343a40; /* Dark theme background */
+    color: #fff; /* Dark theme text color */
+    border-radius: 10px; /* Rounded corners for the container */
+    padding: 20px; /* Add padding for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for better visibility */
+  }
+  
+  .create-event-title.light {
+    color: #000; /* Light theme title color */
+  }
+  
+  .create-event-title.dark {
+    color: #fff; /* Dark theme title color */
+  }
+  
+  .form-input.light {
+    background-color: #fff; /* Light theme input background */
+    color: #000; /* Light theme input text color */
+    border-radius: 5px; /* Rounded corners for input fields */
+    border: 1px solid #ced4da; /* Optional: Border for light theme */
+  }
+  
+  .form-input.dark {
+    background-color: #495057; /* Dark theme input background */
+    color: #fff; /* Dark theme input text color */
+    border-radius: 5px; /* Rounded corners for input fields */
+    border: 1px solid #6c757d; /* Optional: Border for dark theme */
+  }
+  
+  .form-button.light {
+    background-color: #007bff; /* Light theme button color */
+    color: #fff; /* Light theme button text color */
+    border-radius: 5px; /* Rounded corners for button */
+    border: none; /* Remove border for button */
+  }
+  
+  .form-button.dark {
+    background-color: #6c757d; /* Dark theme button color */
+    color: #fff; /* Dark theme button text color */
+    border-radius: 5px; /* Rounded corners for button */
+    border: none; /* Remove border for button */
+  }

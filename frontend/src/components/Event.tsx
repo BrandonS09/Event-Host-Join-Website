@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Tile } from 'carbon-components-react';
-import './Event.css'; // Import your custom CSS for additional styling
+import { useTheme } from './ThemeContext'; 
+import './Event.css'; 
 
 interface EventProps {
     e: {
@@ -15,6 +16,7 @@ interface EventProps {
 
 const Event: React.FC<EventProps> = ({ e }) => {
     const [dateDisplay, setDateDisplay] = useState<string>('');
+    const { theme } = useTheme();
 
     useEffect(() => {
         const formattedStartDate = new Date(e.startdate).toLocaleDateString("en-US");
@@ -30,11 +32,11 @@ const Event: React.FC<EventProps> = ({ e }) => {
     const formattedDate = new Date(e.created).toLocaleDateString("en-US");
 
     return (
-        <Tile className="event-tile">
+        <Tile className={`event-tile ${theme}`}>
             <div className="event-content">
-                <h3 className="event-title">{e.name}</h3>
+                <h3 className={`event-title ${theme}`}>{e.name}</h3>
                 <p>Hosted by {e.host_username}</p>
-                <p className="event-date">Created on {formattedDate} Occuring {dateDisplay}</p>
+                <p className={`event-date ${theme}`}>Created on {formattedDate} Occurring {dateDisplay}</p>
             </div>
         </Tile>
     );

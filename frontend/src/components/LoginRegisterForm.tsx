@@ -1,4 +1,3 @@
-// LoginRegisterForm.tsx
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
@@ -6,6 +5,7 @@ import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "./Form.css";
 import LoadingIndicator from "./LoadingIndicator";
+import { useTheme } from "./ThemeContext";
 
 interface FormProps {
   route: string;
@@ -17,7 +17,8 @@ const Form: React.FC<FormProps> = ({ route, method }) => {
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { login } = useAuth(); // Use context here
+  const { login } = useAuth(); 
+  const { theme } = useTheme(); 
 
   const name = method === "login" ? "Login" : "Register";
 
@@ -30,7 +31,7 @@ const Form: React.FC<FormProps> = ({ route, method }) => {
       if (method === "login") {
         localStorage.setItem(ACCESS_TOKEN, res.data.access);
         localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-        login(); // Update context state
+        login(); 
         navigate("/events");
       } else {
         navigate("/login");
@@ -43,7 +44,10 @@ const Form: React.FC<FormProps> = ({ route, method }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form-container">
+    <form
+      onSubmit={handleSubmit}
+      className={`form-container ${theme}`} 
+    >
       <h1>{name}</h1>
       <input
         className="form-input"

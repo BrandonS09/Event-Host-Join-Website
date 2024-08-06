@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar'; // Adjust path as needed
 import Login from './pages/Login';
@@ -7,7 +8,7 @@ import Events from './pages/Events';
 import './App.css';
 import ProtectedRoute from './components/ProtectedRoute';
 import CreateEvent from './pages/CreateEvent';
-
+import ThemeSwitcher from './components/ThemeSwitcher'; 
 
 const Logout = () => {
   localStorage.clear();
@@ -23,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <main style={{ marginTop: '4rem' }}> {/* Adjust margin to ensure content is below Navbar */}
+      <main style={{ marginTop: '4rem' }}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/events" element={
@@ -39,6 +40,7 @@ function App() {
           } />
         </Routes>
       </main>
+      <ThemeSwitcher /> 
     </BrowserRouter>
   );
 }

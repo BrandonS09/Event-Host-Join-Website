@@ -1,15 +1,15 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "./Navbar.css"; // Ensure this path is correct
 import { useAuth } from "./AuthContext";
+import { useTheme } from "./ThemeContext"; // Import useTheme
+import "./Navbar.css"; // Ensure this path is correct
 
 const NavBar: React.FC = () => {
   const { isLoggedIn, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
-  console.log("NavBar render - isLoggedIn:", isLoggedIn);
+  const { theme } = useTheme(); // Get the current theme from context
 
   const handleLogout = () => {
     logout();
@@ -17,7 +17,13 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <Navbar bg="light" variant="light" expand="lg" sticky="top">
+    <Navbar
+      bg={theme === "light" ? "light" : "dark"} // Set bg color based on theme
+      variant={theme === "light" ? "light" : "dark"} // Set variant based on theme
+      expand="lg"
+      sticky="top"
+      className={theme === "light" ? "navbar-light" : "navbar-dark"} // Apply custom class based on theme
+    >
       <Navbar.Brand as={Link} to="/" className="ml-3">
         Eventify
       </Navbar.Brand>
@@ -54,7 +60,7 @@ const NavBar: React.FC = () => {
               <Nav.Link
                 as={Link}
                 to="/create-event"
-                className={location.pathname === "/create-event" ? "active": ""}
+                className={location.pathname === "/create-event" ? "active" : ""}
               >
                 Create Event
               </Nav.Link>
