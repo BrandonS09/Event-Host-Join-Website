@@ -88,7 +88,7 @@ const EventDetail: React.FC = () => {
       <p>Ends: {new Date(event.enddate).toLocaleString()}</p>
       <p>Created on: {new Date(event.created).toLocaleString()}</p>
       {event.description && <p>Description: {event.description}</p>}
-      <p>Tickets Sold: {ticketSalesData ? ticketSalesData.reduce((sum: number, item: any) => sum + item.count, 0) : "N/A"}</p>
+      <p>{ticketSalesData ? (<p>Tickets Sold: ticketSalesData.reduce((sum: number, item: any) => sum + item.count, 0) </p>) : ""}</p>
       
       {ticketSalesData && (
         <div className="chart-container">
