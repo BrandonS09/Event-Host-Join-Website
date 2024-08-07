@@ -15,3 +15,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+class Ticket(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    ticket_type = models.CharField(max_length=255, default='General Admission')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    count = models.PositiveIntegerField(default=0)
