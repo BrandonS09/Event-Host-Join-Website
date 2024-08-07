@@ -96,13 +96,21 @@ const EventDetail: React.FC = () => {
         </div>
       )}
 
-      {!joined ? (
-        <button onClick={handleJoin} className="join-button">
-          Join Event
-        </button>
-      ) : (
-        <button className="join-button" disabled>
-          Joined
+      {!ticketSalesData ? (
+        <div>
+          {!joined ? (
+            <button onClick={handleJoin} className="join-button">
+              Join Event
+            </button>
+          ) : (
+            <button className="join-button" disabled>
+              Joined
+            </button>
+          )}
+        </div>
+        ) : (
+        <button className="join-button">
+          Delete Event
         </button>
       )}
       {error && <p className="error-message">{error}</p>}
