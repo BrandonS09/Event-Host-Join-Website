@@ -67,18 +67,13 @@ class JoinEventView(generics.GenericAPIView):
             event = Event.objects.get(id=event_id)
             user = request.user
 
-            
             if user in event.participants.all():
                 return JsonResponse({'message': 'You are already participating in this event.'}, status=400)
-
             
             event.participants.add(user)
             event.save()
-
-            
             ticket, created = Ticket.objects.get_or_create(event=event, user=user, defaults={'ticket_type': 'Standard'})
-            if not created:
-                
+            if not created:                
                 Ticket.objects.filter(id=ticket.id).update(count=F('count') + 1)
 
             return JsonResponse({'message': 'You have successfully joined the event.'})
@@ -95,7 +90,6 @@ class EventDetailView(generics.GenericAPIView):
             event = Event.objects.get(id=event_id)
             is_participant = request.user in event.participants.all()
             is_host = event.host == request.user
-
             
             event_data = {
                 'id': event.id,
@@ -106,7 +100,6 @@ class EventDetailView(generics.GenericAPIView):
                 'enddate': event.enddate,
                 'description': event.description,
             }
-
             
             if is_host:
                 ticket_sales_data = Ticket.objects.filter(event=event).values('ticket_type').annotate(count=Count('id')).order_by('ticket_type')

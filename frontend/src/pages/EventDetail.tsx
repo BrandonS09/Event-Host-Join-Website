@@ -12,6 +12,7 @@ import {
   LinearScale,
 } from "chart.js";
 import "../styles/EventDetail.css";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(
   Title,
@@ -38,6 +39,7 @@ const EventDetail: React.FC = () => {
   const [joined, setJoined] = useState(false);
   const [ticketSalesData, setTicketSalesData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -74,6 +76,24 @@ const EventDetail: React.FC = () => {
       setJoined(true);
     } catch (err) {
       setError("Failed to join the event. Please try again.");
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const token = localStorage.getItem("ACCESS_TOKEN");
+      await api.delete(
+        `/api/events/${id}/delete/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        }
+      );
+      //Add modal later that makes the user confirm their choice
+      navigate(`/events/`);
+    } catch (err){
+      setError("Failed to delete event. Please try again");
     }
   };
 
@@ -142,7 +162,7 @@ const EventDetail: React.FC = () => {
           )}
         </div>
       ) : (
-        <button className="join-button">Delete Event</button>
+        <button className="join-button" onClick={handleDelete}>Delete Event</button>
       )}
       {error && <p className="error-message">{error}</p>}
     </div>
