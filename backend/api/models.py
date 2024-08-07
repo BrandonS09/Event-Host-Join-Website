@@ -17,7 +17,7 @@ class Event(models.Model):
         return self.name
 
 class Ticket(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, related_name='tickets', on_delete=models.CASCADE)
     ticket_type = models.CharField(max_length=255, default='General Admission')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
