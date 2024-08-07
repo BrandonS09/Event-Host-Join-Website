@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.db.models import Count
+from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 
 class CreateUserView(generics.CreateAPIView):
@@ -117,3 +118,8 @@ class EventDetailView(generics.GenericAPIView):
         
         except Event.DoesNotExist:
             return JsonResponse({'message': 'Event not found.'}, status=404)
+class EventTicketsView(generics.GenericAPIView):
+    def get(self, request, event_id):
+        tickets = Ticket.objects.filter(event_id=event_id)
+        serializer = TicketSerializer(tickets, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

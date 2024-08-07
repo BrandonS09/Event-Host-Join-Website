@@ -13,6 +13,8 @@ import {
 } from "chart.js";
 import "../styles/EventDetail.css";
 import { useNavigate } from "react-router-dom";
+import { Button } from '@mui/material';
+import TicketModal from '../components/TicketModal';
 
 ChartJS.register(
   Title,
@@ -33,11 +35,28 @@ interface EventType {
   description?: string;
 }
 
+interface Ticket {
+  id: number;
+  name: string;
+  price: number;
+  available: number;
+}
+
+interface SelectedTicket {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 const EventDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [event, setEvent] = useState<EventType | null>(null);
   const [joined, setJoined] = useState(false);
   const [ticketSalesData, setTicketSalesData] = useState<any>(null);
+  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [selectedTickets, setSelectedTickets] = useState<SelectedTicket[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -61,12 +80,37 @@ const EventDetail: React.FC = () => {
     fetchEvent();
   }, [id]);
 
+  useEffect(() => {
+    if (modalOpen) {
+      const fetchTickets = async () => {
+        try {
+          const token = localStorage.getItem("ACCESS_TOKEN");
+          const response = await api.get(`/api/events/${id}/tickets/`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setTickets(response.data);
+        } catch (err) {
+          setError("Failed to load ticket options. Please try again.");
+        }
+      };
+
+      fetchTickets();
+    }
+  }, [modalOpen, id]);
+
   const handleJoin = async () => {
+    if (selectedTickets.length === 0) {
+      setError("Please select at least one ticket before joining.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem("ACCESS_TOKEN");
       await api.post(
         `/api/events/${id}/join/`,
-        {},
+        { tickets: selectedTickets },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -74,6 +118,7 @@ const EventDetail: React.FC = () => {
         }
       );
       setJoined(true);
+      setModalOpen(false);
     } catch (err) {
       setError("Failed to join the event. Please try again.");
     }
@@ -95,6 +140,13 @@ const EventDetail: React.FC = () => {
     } catch (err){
       setError("Failed to delete event. Please try again");
     }
+  };
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
+  const handleSelectTickets = (selectedTickets: SelectedTicket[]) => {
+    setSelectedTickets(selectedTickets);
   };
 
   if (!event) {
@@ -152,18 +204,35 @@ const EventDetail: React.FC = () => {
       {!ticketSalesData ? (
         <div>
           {!joined ? (
-            <button onClick={handleJoin} className="join-button">
+            <Button variant="contained" color="primary" onClick={handleOpenModal}>
               Join Event
-            </button>
+            </Button>
           ) : (
-            <button className="join-button" disabled>
+            <Button variant="contained" disabled>
               Joined
-            </button>
+            </Button>
           )}
         </div>
       ) : (
-        <button className="join-button" onClick={handleDelete}>Delete Event</button>
+        <Button variant="contained" color="secondary" onClick={handleDelete}>
+          Delete Event
+        </Button>
       )}
+
+      <TicketModal 
+        open={modalOpen} 
+        handleClose={handleCloseModal} 
+        tickets={tickets} 
+        onSelectTickets={handleSelectTickets} 
+      />
+      <Button 
+        variant="contained" 
+        color="primary" 
+        onClick={handleJoin} 
+        disabled={selectedTickets.length === 0}
+      >
+        Confirm Ticket Selection
+      </Button>
       {error && <p className="error-message">{error}</p>}
     </div>
   );
