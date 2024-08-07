@@ -26,7 +26,6 @@ class CreateEventView(generics.CreateAPIView):
         else:
             print(serializer.errors)
 
-
 class DeleteEventView(generics.DestroyAPIView):
     serializer_class = EventSerializer
     permission_classes = [IsAuthenticated]
