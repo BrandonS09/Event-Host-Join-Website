@@ -1,10 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; // Use named import for jwt-decode
+import { jwtDecode } from "jwt-decode";
 import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
 import { useState, useEffect, ReactNode } from "react";
 
-// Define the type for the props
 interface ProtectedRouteProps {
   children: ReactNode;
 }

@@ -1,65 +1,75 @@
 .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-  }
-  
-  .form-input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .form-button {
-    width: 95%;
-    padding: 10px;
-    margin: 20px 0;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .form-button:hover {
-    background-color: #0056b3;
-  }
-  /* Form.css */
-.form-container.light {
-  background-color: #f8f9fa; /* Light theme background */
-  color: #000; /* Light theme text color */
-}
-
-.form-container.dark {
-  background-color: #343a40; /* Dark theme background */
-  color: #fff; /* Dark theme text color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
 }
 
 .form-input {
-  border: 1px solid #ccc; /* Default border color */
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-button {
+  width: 95%;
+  padding: 10px;
+  margin: 20px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+
+.form-container.light {
+  background-color: #f8f9fa;
+
+  color: #000;
+
+}
+
+.form-container.dark {
+  background-color: #343a40;
+
+  color: #fff;
+
+}
+
+.form-input {
+  border: 1px solid #ccc;
+
   padding: 0.5rem;
   margin: 0.5rem 0;
   border-radius: 4px;
 }
 
 .form-input.light {
-  background-color: #fff; /* Light theme input background */
-  color: #000; /* Light theme input text color */
+  background-color: #fff;
+
+  color: #000;
+
 }
 
 .form-input.dark {
-  background-color: #495057; /* Dark theme input background */
-  color: #fff; /* Dark theme input text color */
+  background-color: #495057;
+
+  color: #fff;
+
 }
 
 .form-button {
@@ -67,14 +77,18 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #007bff; /* Default button color */
-  color: #fff; /* Button text color */
+  background-color: #007bff;
+
+  color: #fff;
+
 }
 
 .form-button.light {
-  background-color: #007bff; /* Light theme button color */
+  background-color: #007bff;
+
 }
 
 .form-button.dark {
-  background-color: #6c757d; /* Dark theme button color */
+  background-color: #6c757d;
+
 }

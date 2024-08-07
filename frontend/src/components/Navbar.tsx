@@ -1,13 +1,13 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "../styles/Navbar.css"; // Ensure this path is correct
+import "../styles/Navbar.css";
 import { useAuth } from "./AuthContext";
-import { useTheme } from "./ThemeContext"; // Import useTheme
+import { useTheme } from "./ThemeContext";
 
 const NavBar: React.FC = () => {
   const { isLoggedIn, logout } = useAuth();
-  const { theme } = useTheme(); // Get current theme
+  const { theme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
 

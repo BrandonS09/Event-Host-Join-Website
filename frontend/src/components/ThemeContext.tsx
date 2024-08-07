@@ -6,10 +6,10 @@ const getInitialTheme = () => {
     if (typeof storedPrefs === "string") {
       return storedPrefs;
     }
-    // If no preferred theme is stored, default to light theme
+
     return "light";
   }
-  return "light"; // Default to light theme
+  return "light";
 };
 
 export const ThemeContext = createContext<any>(null);

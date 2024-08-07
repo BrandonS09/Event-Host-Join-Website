@@ -28,7 +28,6 @@ const Events: React.FC = () => {
     getEvents();
   }, []);
 
-  // Filter events based on search term
   const filteredEvents = events.filter((event) => {
     if (searchTerm.startsWith("host:")) {
       const hostSearch = searchTerm.slice(5).toLowerCase().trim();

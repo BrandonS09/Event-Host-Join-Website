@@ -13,7 +13,6 @@ import {
 } from "chart.js";
 import "../styles/EventDetail.css";
 
-// Register necessary Chart.js components
 ChartJS.register(
   Title,
   Tooltip,
@@ -37,7 +36,7 @@ const EventDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [event, setEvent] = useState<EventType | null>(null);
   const [joined, setJoined] = useState(false);
-  const [ticketSalesData, setTicketSalesData] = useState<any>(null); // Change to appropriate type
+  const [ticketSalesData, setTicketSalesData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const EventDetail: React.FC = () => {
         });
         setEvent(response.data.event);
         setJoined(response.data.is_participant);
-        setTicketSalesData(response.data.ticket_sales_data); // Adjust based on your response data
+        setTicketSalesData(response.data.ticket_sales_data);
       } catch (err) {
         setError("Failed to load event details. Please try again.");
       }

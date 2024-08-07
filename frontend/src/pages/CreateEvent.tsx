@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api"; // Import the configured axios instance
+import api from "../api";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { ACCESS_TOKEN } from "../constants";
-import { useTheme } from "../components/ThemeContext"; // Import useTheme
-import "../styles/CreateEvent.css"; // Import your custom CSS for additional styling
+import { useTheme } from "../components/ThemeContext";
+import "../styles/CreateEvent.css";
 
 interface EventData {
   name: string;
@@ -22,11 +22,10 @@ const CreateEvent: React.FC = () => {
   });
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
-  const navigate = useNavigate(); // Hook for navigation
-  const { theme } = useTheme(); // Get the current theme from context
-
+  const navigate = useNavigate();
+  const { theme } = useTheme();
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setEventData({ ...eventData, [name]: value });
@@ -52,7 +51,7 @@ const CreateEvent: React.FC = () => {
         enddate: "",
         description: "",
       });
-      navigate("/events"); // Redirect to /events
+      navigate("/events");
     } catch (err) {
       setError("An error occurred. Please try again.");
     }
@@ -61,7 +60,6 @@ const CreateEvent: React.FC = () => {
   return (
     <Container className={`create-event-container ${theme}`}>
       {" "}
-      {/* Apply theme class here */}
       <h1 className={`create-event-title ${theme}`}>Create Event</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}
@@ -74,7 +72,7 @@ const CreateEvent: React.FC = () => {
             value={eventData.name}
             onChange={handleChange}
             required
-            className={`form-input ${theme}`} // Apply theme class here
+            className={`form-input ${theme}`}
           />
         </Form.Group>
         <Form.Group controlId="formEventStartDate">
@@ -85,7 +83,7 @@ const CreateEvent: React.FC = () => {
             value={eventData.startdate}
             onChange={handleChange}
             required
-            className={`form-input ${theme}`} // Apply theme class here
+            className={`form-input ${theme}`}
           />
         </Form.Group>
         <Form.Group controlId="formEventEndDate">
@@ -96,7 +94,7 @@ const CreateEvent: React.FC = () => {
             value={eventData.enddate}
             onChange={handleChange}
             required
-            className={`form-input ${theme}`} // Apply theme class here
+            className={`form-input ${theme}`}
           />
         </Form.Group>
         <Form.Group controlId="formEventDescription">
@@ -107,7 +105,7 @@ const CreateEvent: React.FC = () => {
             value={eventData.description}
             onChange={handleChange}
             rows={3}
-            className={`form-input ${theme}`} // Apply theme class here
+            className={`form-input ${theme}`}
           />
         </Form.Group>
         <Button
@@ -116,7 +114,6 @@ const CreateEvent: React.FC = () => {
           className={`form-button ${theme}`}
         >
           {" "}
-          {/* Apply theme class here */}
           Create Event
         </Button>
       </Form>

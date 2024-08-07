@@ -1,69 +1,66 @@
-/* NavBar.css */
-
-/* Padding for the brand */
 .navbar-brand {
     padding-left: 1rem;
-    /* Adjust the padding as needed */
+
 }
 
-/* Ensure links are aligned to the right */
+
 .navbar-nav {
     margin-left: auto;
-    /* Pushes the nav items to the right */
+
     padding-right: 1rem;
 }
 
-/* Style for active links */
+
 .nav-link.active {
     font-weight: bold;
-    /* Makes the active link bold */
+
     border-bottom: 2px solid #ffffff;
-    /* Underline the active link */
+
 }
 
-/* Navbar.css */
+
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    /* Ensure it stays above other content */
+
     background-color: #fff;
-    /* Or your desired background color */
-    /* Remove margin-top if any */
+
+
     margin-top: 0;
-    /* Remove padding-top if any */
+
     padding-top: 0;
 }
 
-/* Navbar.css */
+
 .navbar-light {
     background-color: #f8f9fa;
-    /* Light theme background */
+
 }
 
 .navbar-dark {
     background-color: #343a40;
-    /* Dark theme background */
+
 }
 
 .navbar-light .navbar-nav .nav-link {
     color: #000;
-    /* Light theme text color */
+
 }
 
 .navbar-dark .navbar-nav .nav-link {
     color: #fff;
-    /* Dark theme text color */
+
 }
 
 .navbar-light .navbar-brand {
     color: #000;
-    /* Light theme brand color */
+
 }
 
 .navbar-dark .navbar-brand {
     color: #fff;
-    /* Dark theme brand color */
+
 }

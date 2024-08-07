@@ -1,29 +1,29 @@
-/* Event.css */
 .event-tile {
     width: 100%;
     max-width: 1000px;
-    /* Set a maximum width for the tile */
+
     padding: 20px;
-    /* Add padding inside the tile */
+
     border-radius: 10px;
-    /* Rounded corners */
+
     background-color: #fff;
-    /* Background color of the tile */
+
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Add shadow for depth */
+
     margin-bottom: 20px;
-    /* Space between tiles */
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Align content to the start */
+
     gap: 10px;
-    /* Space between elements inside the tile */
+
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
 .event-tile:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* or another hover color */
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .event-content {
@@ -42,54 +42,54 @@
     margin: 0;
 }
 
-/* Event.css */
+
 .event-tile.light {
     background-color: #f8f9fa;
-    /* Light theme background */
+
     color: #000;
-    /* Light theme text color */
+
 }
 
 .event-tile.dark {
     background-color: #343a40;
-    /* Dark theme background */
+
     color: #fff;
-    /* Dark theme text color */
+
 }
 
 .event-title.light {
     color: #000;
-    /* Light theme title color */
+
 }
 
 .event-title.dark {
     color: #fff;
-    /* Dark theme title color */
+
 }
 
 .event-date.light {
     color: #000;
-    /* Light theme date color */
+
 }
 
 .event-date.dark {
     color: #fff;
-    /* Dark theme date color */
+
 }
 
 .event-container {
     display: flex;
     flex-direction: column;
-    /* Stack tiles vertically */
+
     align-items: flex-start;
-    /* Align tiles to the left */
+
     gap: 20px;
-    /* Space between tiles */
+
     width: 100%;
     max-width: 1000px;
-    /* Optional: Set a max-width for the container */
+
     margin: 0 auto;
-    /* Center the container horizontally */
+
     padding: 0 20px;
-    /* Add horizontal padding if needed */
+
 }

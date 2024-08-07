@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "./ThemeContext";
 import { FaSun, FaMoon } from "react-icons/fa6";
-import "../styles/ThemeSwitcher.css"; // Add this for smooth transition CSS
+import "../styles/ThemeSwitcher.css";
 
 const ThemeSwitcher: React.FC = () => {
   const { theme, setTheme } = useTheme();

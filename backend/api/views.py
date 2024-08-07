@@ -11,7 +11,7 @@ from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
-# Create your views here.
+
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -67,18 +67,18 @@ class JoinEventView(generics.GenericAPIView):
             event = Event.objects.get(id=event_id)
             user = request.user
 
-            # Check if the user is already participating
+            
             if user in event.participants.all():
                 return JsonResponse({'message': 'You are already participating in this event.'}, status=400)
 
-            # Add the user to the event participants
+            
             event.participants.add(user)
             event.save()
 
-            # Update or create the ticket
+            
             ticket, created = Ticket.objects.get_or_create(event=event, user=user, defaults={'ticket_type': 'Standard'})
             if not created:
-                # Increment the count if the ticket already exists
+                
                 Ticket.objects.filter(id=ticket.id).update(count=F('count') + 1)
 
             return JsonResponse({'message': 'You have successfully joined the event.'})
@@ -96,7 +96,7 @@ class EventDetailView(generics.GenericAPIView):
             is_participant = request.user in event.participants.all()
             is_host = event.host == request.user
 
-            # Get basic event details
+            
             event_data = {
                 'id': event.id,
                 'name': event.name,
@@ -107,7 +107,7 @@ class EventDetailView(generics.GenericAPIView):
                 'description': event.description,
             }
 
-            # Get ticket sales data only if the user is the host
+            
             if is_host:
                 ticket_sales_data = Ticket.objects.filter(event=event).values('ticket_type').annotate(count=Count('id')).order_by('ticket_type')
                 response_data = {

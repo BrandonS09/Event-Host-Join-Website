@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tile } from "carbon-components-react";
-import { ThemeContext } from "./ThemeContext"; // Adjust the path as needed
-import "../styles/Event.css"; // Import your custom CSS for additional styling
+import { ThemeContext } from "./ThemeContext";
+import "../styles/Event.css";
 
 interface EventProps {
   e: {
@@ -22,7 +22,7 @@ const Event: React.FC<EventProps> = ({ e }) => {
 
   useEffect(() => {
     const formattedStartDate = new Date(e.startdate).toLocaleDateString(
-      "en-US",
+      "en-US"
     );
     const formattedEndDate = new Date(e.enddate).toLocaleDateString("en-US");
 
